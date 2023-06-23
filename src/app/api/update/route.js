@@ -1,3 +1,4 @@
+"use server";
 import { NextResponse } from "next/server";
 import { connect } from "@/utils/db";
 import Form from "@/model/form";
@@ -5,8 +6,8 @@ import Form from "@/model/form";
 export const PATCH = async (req) => {
   await connect();
 
-    const bc = await req.json();
-    
+  const bc = await req.json();
+
   console.log("ehvfvj", bc);
 
   const id = bc.id;
@@ -14,11 +15,11 @@ export const PATCH = async (req) => {
     name: bc.username,
     email: bc.email,
     password: bc.password,
-    rating:bc.rating
+    rating: bc.rating,
   };
 
   try {
-    console.log(va,"kjhgfhfuyyggu");
+    console.log(va, "kjhgfhfuyyggu");
 
     const b = await Form.findByIdAndUpdate({ _id: id }, va);
 

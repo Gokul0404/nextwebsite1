@@ -1,19 +1,20 @@
+
 import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema(
   {
     name: {
-      type: String
+      type: String,
     },
 
     email: {
-      type: String
+      type: String,
     },
     number: {
-      type: String
+      type: String,
     },
   },
   { timestamps: true }
 );
 
-export default mongoose.models.dets|| mongoose.model("dets", userSchema)
+export default mongoose.models.dets || mongoose.model("dets", userSchema);

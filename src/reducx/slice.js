@@ -1,16 +1,18 @@
 
+"use client"
+
 import { createSlice } from "@reduxjs/toolkit";
 import Cookies from "js-cookie";
-import { useState } from "react";
+
 
 
 const initialState = {
   value: false,
   user:
-    Cookies.get("log") === undefined ? false : JSON.parse(Cookies.get("log")),
+    Cookies.get("log") === undefined ? false : Cookies.get("log"),
 };
 // , id: Cookies.get('au')
-
+console.log("slice", typeof Cookies.get("log"));
 const taskslice = createSlice({
   name: "use",
   initialState,

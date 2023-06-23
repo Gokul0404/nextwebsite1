@@ -1,3 +1,6 @@
+
+"use server";
+
 import { NextResponse } from "next/server";
 import {connect} from '../../../utils/db'
 import model from '../../../model/form'

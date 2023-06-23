@@ -4,11 +4,9 @@ import axios from "axios";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Button, Checkbox, Form, Input } from "antd";
-import form from "@/model/form";
-import Navbar from "@/app/component/Navbar";
+import React from "react";
+import { useDispatch } from "react-redux";
+import { Button, Form, Input } from "antd";
 import Cookies from "js-cookie";
 export default function Login() {
   const dispatch = useDispatch();

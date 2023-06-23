@@ -13,17 +13,18 @@ export default function Navbar() {
   const dispatch = useDispatch();
   const navigate = useRouter();
   const handleLogout = async () => {
-    signOut();
+    
 
     dispatch(loginid("false"));
     Cookies.set("log", "false");
+    navigate.push('/dashboard/login')
   };
 
   const dt = useSelector((e) => e.cart);
 
-  console.log("login", dt.user);
+  console.log("login", typeof dt.user, typeof "false");
 
-  console.log("ssssssss", dt.user === false);
+  console.log("ssssssss", dt.user === "false");
 
   // console.log(dt.user);
   // if ( dt.user === false ) {
@@ -33,6 +34,16 @@ export default function Navbar() {
   //   navigate.push("/dashboard");
   //   console.log("yessssss");
   // }
+
+  const nas = (e) => {
+    if (dt.user === "false") {
+      navigate.push("/dashboard/login");
+        console.log("nooo");
+      } else {
+        navigate.push("/dashboard");
+        console.log("yessssss");
+    }
+  }
 
   return (
     <div>
@@ -74,16 +85,15 @@ export default function Navbar() {
                 <li>
                   <Link href="/contact">Contact</Link>
                 </li>
-                <li>
-                  <Link
-                    href={`${
+                <li onClick={(e)=>nas(e)} className="cursor-pointer">
+               
+                    {/* href={`${
                       dt.user === false ? "/dashboard/login" : "/dashboard"
-                    }`}
-                    // href='/dashboard/login'
-                    onClick={() => dash()}
-                  >
+                    }`} */}
+                    
+                  
                     Dashboard
-                  </Link>
+                 
                 </li>
               </div>
               <button
