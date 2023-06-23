@@ -6,6 +6,6 @@ export const connect = async () => {
      await mongoose.connect(process.env.MONGOOSE_URL);
   } catch (error) {
     console.log(error,"ekrjh")
-    throw new Error("connection faildd");
+    throw new Error("connection faildd"); 
   }
 };
