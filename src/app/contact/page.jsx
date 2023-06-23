@@ -3,10 +3,8 @@
 import Image from "next/image";
 import React from "react";
 
-export default function contact() {
-  const da = (e) => {
-    console.log(e);
-  };
+export default function Contact() {
+
   return (
     <div className="mt-5">
       <div>

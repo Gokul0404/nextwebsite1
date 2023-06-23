@@ -1,4 +1,4 @@
-'use client'
+"use client"
 
 import React, { useEffect, useState } from "react";
 import { BiSun, BiMoon } from "react-icons/bi";
@@ -13,9 +13,9 @@ export default function Tonggle(props) {
   dispatch(eves(!sun));
 
   // const light = (e) => {
-     
+
   //   setSun(!sun);
-   
+
   // };
 
   sun ? props.data(true) : props.data(false);

@@ -1,57 +1,38 @@
 "use client";
-import { loginid, mailid } from "@/reducx/slice";
-import axios from "axios";
+import { loginid } from "@/reducx/slice";
 import Cookies from "js-cookie";
 import { signOut } from "next-auth/react";
-import { cookies } from "next/dist/client/components/headers";
 
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function Navbar() {
   const dispatch = useDispatch();
   const navigate = useRouter();
+  const handleLogout = async () => {
+    signOut();
 
-
-
-
-  const handleLogout = async() => {
-      signOut()
-  
     dispatch(loginid("false"));
-     Cookies.set("log", "false");
- 
-  
-    
-  }
+    Cookies.set("log", "false");
+  };
 
-
-  const dt=useSelector(e=>e.cart)
+  const dt = useSelector((e) => e.cart);
 
   console.log("login", dt.user);
 
+  console.log("ssssssss", dt.user === false);
 
-console.log("ssssssss",dt.user === false );
-
-  console.log(dt.user)
-  if ( dt.user === false ) {
-    navigate.push("/dashboard/login");
-    console.log("nooo");
-  } else {
-    navigate.push("/dashboard");
-    console.log("yessssss");
-  }
-
-  
-
-
-
-  
-
-
+  // console.log(dt.user);
+  // if ( dt.user === false ) {
+  //   navigate.push("/dashboard/login");
+  //   console.log("nooo");
+  // } else {
+  //   navigate.push("/dashboard");
+  //   console.log("yessssss");
+  // }
 
   return (
     <div>
@@ -59,9 +40,8 @@ console.log("ssssssss",dt.user === false );
         <div className="container mx-auto ">
           <div className="flex justify-between text-[#afafaf] font-[500] text-[15px]">
             <div className="flex">
-              <Link  href="/">
+              <Link href="/">
                 <Image
-                  
                   src="/lotus.png"
                   width={45}
                   height={50}
@@ -73,40 +53,29 @@ console.log("ssssssss",dt.user === false );
                   className="py-2 contrast-[110%] saturate-[150%] "
                 />
               </Link>
-              <Link  href="/">
+              <Link href="/">
                 <p className="text-[10px] font-[500] mt-6 pl-1">Lotos</p>
               </Link>
             </div>
             <div className="flex gap-6">
               <div className="flex list-none gap-5 mt-5">
                 <li>
-                  <Link  href="/">
-                    Home
-                  </Link>
+                  <Link href="/">Home</Link>
                 </li>
                 <li>
-                  <Link  href="/portfolio">
-                    Portfolio
-                  </Link>
+                  <Link href="/portfolio">Portfolio</Link>
                 </li>
                 <li>
-                  <Link  href="/blog">
-                    Blog
-                  </Link>
+                  <Link href="/blog">Blog</Link>
                 </li>
                 <li>
-                  <Link  href="/about">
-                    About
-                  </Link>
+                  <Link href="/about">About</Link>
                 </li>
                 <li>
-                  <Link  href="/contact">
-                    Contact
-                  </Link>
+                  <Link href="/contact">Contact</Link>
                 </li>
                 <li>
                   <Link
-                    
                     href={`${
                       dt.user === false ? "/dashboard/login" : "/dashboard"
                     }`}

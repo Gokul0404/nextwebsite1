@@ -6,10 +6,10 @@ import Navbar from "./component/Navbar";
 
 import "./globals.css";
 import { Inter } from "next/font/google";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import { configureStore } from "@reduxjs/toolkit";
-import { Provider, useDispatch } from "react-redux";
-import stor, { eves } from "../reducx/slice";
+import { Provider } from "react-redux";
+import stor from "../reducx/slice";
 import Tonggle from "./component/Tonggle";
 import { SessionProvider} from 'next-auth/react'
 
@@ -44,10 +44,11 @@ export default function RootLayout({ children }) {
       > 
      
         <Provider store={store1}>
-           <SessionProvider>
+           {/* <SessionProvider> */}
           <Navbar /> {children}
           <Tonggle data={data} />
-          <Footer /> </SessionProvider>
+          <Footer />
+        {/* </SessionProvider> */}
         </Provider> 
    
       </body>
