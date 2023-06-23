@@ -8,6 +8,10 @@
   --background-end-rgb: 255, 255, 255;
 }
 
+* {
+  scroll-behavior: smooth;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
@@ -16,12 +20,130 @@
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.nn {
+  z-index: -1 !important;
+}
+
+.hh {
+  /* background: rgb(0, 107, 247); */
+  background: #13b196;
+  /* background: rgb(98, 233, 210); */
+  /* background: linear-gradient(164deg, rgb(98, 233, 210) 26%, rgba(255, 255, 255, 0.813) 100%); */
+
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
+}
+
+.pa {
+  fill: rgb(240, 240, 240);
+}
+
+.im {
+  filter: hue-rotate(310deg);
+}
+.im1 {
+  /* filter: hue-rotate(370deg) !important; */
+  filter: hue-rotate(30deg) !important;
+}
+
+li:hover {
+  color: #13b196;
+  /* color: rgb(98, 233, 210); */
+  transition: 0.4s ease-in-out;
+}
+
+.but:active {
+  background-color: rgb(3, 212, 125);
+  transform: scaleY(50deg);
+  transition: 0.3s;
+}
+
+.gal {
+  background-image: url("/gal.png");
+  background-position: center;
+  background-size: cover;
+}
+.gal2 {
+  background-image: url("/gal2.png");
+  background-position: center;
+  background-size: cover;
+}
+.gal3 {
+  background-image: url("/gal3.png");
+  background-position: center;
+  background-size: cover;
+}
+.gal4 {
+  background-image: url("/gal4.png");
+  background-position: center;
+  background-size: cover;
+}
+
+.containera {
+  width: 51px;
+  height: 31px;
+  position: relative;
+}
+
+/* Hide default HTML checkbox */
+.checkbox {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+.switch {
+  width: 87%;
+  height: 80%;
+  display: block;
+  background-color: #e9e9eb;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease-out;
+}
+
+/* The slider */
+.slider {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  left: calc(50% - 27px / 2 - 10px);
+  top: calc(50% - 27px / 2);
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.15), 0px 3px 1px rgba(0, 0, 0, 0.06);
+  transition: all 0.2s ease-out;
+  cursor: pointer;
+}
+
+.checkbox:checked + .switch {
+  background-color: #34c759;
+}
+
+.checkbox:checked + .switch .slider {
+  left: calc(50% - 27px / 2 + 10px);
+  top: calc(50% - 27px / 2);
+}
+
+.ro {
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+
+.ant-form-item{
+  padding: 0 !important;
+}
+
+
+.ant-table{
+  background-color: inherit !important;
+color: inherit !important;
+}
+
+.ant-table-cell{
+  background-color: inherit !important;
+  color: inherit !important;
 }
