@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Modal, Rate, Spin, Table, Tooltip } from "antd";
 import { Button, Popconfirm, Form, Input } from "antd";
-import { data } from "autoprefixer";
+
 import { useSelector } from "react-redux";
 import { BiTrashAlt, BiEdit } from "react-icons/bi";
 import { AiOutlineUserAdd } from "react-icons/ai";
