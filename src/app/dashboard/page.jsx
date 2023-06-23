@@ -179,171 +179,173 @@ export default function Dashboard() {
 
   return (
     <>
-      <div className="text-center font-bold mt-10">
-        <h1>Welcome: {b}</h1>
-      </div>
-      <div className="absolute right-10 z-50  ">
-        <Tooltip title="Add User">
-          <button
-            onClick={() => setRej(true)}
-            className=" !cursor-pointer w-[35px] h-[35px]  rounded-full bg-white shadow-md flex justify-center items-center hover:shadow-inner"
-          >
-            <AiOutlineUserAdd
-              className={` ${
+      <div className="min-h-screen">
+        <div className="text-center font-bold mt-10">
+          <h1>Welcome: {b}</h1>
+        </div>
+        <div className="absolute right-10 z-50  ">
+          <Tooltip title="Add User">
+            <button
+              onClick={() => setRej(true)}
+              className=" !cursor-pointer w-[35px] h-[35px]  rounded-full bg-white shadow-md flex justify-center items-center hover:shadow-inner"
+            >
+              <AiOutlineUserAdd
+                className={` ${
+                  a.value
+                    ? "font-bold !text-[18px] !cursor-pointer text-black transition duration-700 ease-in-out"
+                    : "font-bold !text-[18px] !cursor-pointer transition duration-700 ease-in-out"
+                } `}
+              />
+            </button>
+          </Tooltip>
+        </div>
+        <Spin spinning={loading}>
+          <div className="flex justify-center">
+            <Table
+              dataSource={datas}
+              columns={columns}
+              pagination={{
+                pageSize: 5,
+              }}
+              style={{ width: "60%", marginTop: "5%" }}
+              className={`${
                 a.value
-                  ? "font-bold !text-[18px] !cursor-pointer text-black transition duration-700 ease-in-out"
-                  : "font-bold !text-[18px] !cursor-pointer transition duration-700 ease-in-out"
-              } `}
+                  ? "!bg-black !text-white transition duration-700 ease-in-out"
+                  : "!bg-white !text-black transition duration-700 ease-in-out"
+              }`}
             />
-          </button>
-        </Tooltip>
-      </div>
-      <Spin spinning={loading}>
-        <div className="flex justify-center">
-          <Table
-            dataSource={datas}
-            columns={columns}
-            pagination={{
-              pageSize: 5,
-            }}
-            style={{ width: "60%", marginTop: "5%" }}
-            className={`${
-              a.value
-                ? "!bg-black !text-white transition duration-700 ease-in-out"
-                : "!bg-white !text-black transition duration-700 ease-in-out"
-            }`}
-          />
-        </div>
-      </Spin>
+          </div>
+        </Spin>
 
-      <div className=" flex flex-col justify-center items-center text-center gap-y-4 py-5">
-        <div className="w-[20%]">
-          <div className="flex">
-            <progress
-              className="progress progress-accent w-56"
-              value={50}
-              max="100"
-            ></progress>
-            <span className="mt-[-3%] pl-3">50%</span>
-          </div>
-          <div className="flex">
-            <progress
-              className="progress progress-accent w-56"
-              value={20}
-              max="100"
-            ></progress>
-            <span className="mt-[-3%] pl-3">20%</span>
-          </div>
-          <div className="flex">
-            <progress
-              className="progress progress-accent w-56"
-              value={60}
-              max="100"
-            ></progress>
-            <span className="mt-[-3%] pl-3">60%</span>
-          </div>
-          <div className="flex">
-            <progress
-              className="progress progress-accent w-56"
-              value={37}
-              max="100"
-            ></progress>
-            <span className="mt-[-3%] pl-3">37%</span>
-          </div>
-          <div className="flex">
-            <progress
-              className="progress progress-accent w-56"
-              value={80}
-              max="100"
-            ></progress>
-            <span className="mt-[-3%] pl-3">80%</span>
-          </div>
-        </div>
-      </div>
-
-      <Modal
-        footer={null}
-        title="Update the Datas"
-        destroyOnClose
-        centered
-        open={rej}
-        onOk={() => setRej(false)}
-        onCancel={() => setRej(false)}
-      >
-        <Rejester ressend={ressend} />
-      </Modal>
-      <Modal
-        footer={null}
-        title="Update the Datas"
-        destroyOnClose
-        centered
-        open={modal2Open}
-        onOk={() => setModal2Open(false)}
-        onCancel={() => setModal2Open(false)}
-      >
-        <Form
-          name="basic"
-          labelCol={{ span: 8 }}
-          wrapperCol={{ span: 16 }}
-          style={{ maxWidth: 600 }}
-          initialValues={{ remember: true }}
-          onFinish={onFinish}
-          layout="vertical"
-          className="!mt-5"
-          autoComplete="off"
-        >
-          <Form.Item
-            label="Username"
-            initialValue={details}
-            name="username"
-            rules={[{ message: "Please input your username!" }]}
-          >
-            <Input />
-          </Form.Item>
-          <Form.Item
-            label="Email"
-            name="email"
-            initialValue={details2}
-            rules={[{ message: "Please input your email!" }]}
-          >
-            <Input />
-          </Form.Item>
-
-          <Form.Item
-            label="Password"
-            initialValue={details3}
-            name="password"
-            rules={[{ message: "Please input your password!" }]}
-          >
-            <Input.Password />
-          </Form.Item>
-
-          <Form.Item>
-            <Rate
-              allowHalf
-              defaultValue={rast}
-              onChange={(e) => setRating(e)}
-            />
-          </Form.Item>
-          <Form.Item>
-            <ColorPicker value={colors} onChange={(e, s) => ok(e, s)} />
-          </Form.Item>
-          <Form.Item>
-            <div className=" flex gap-x-5">
-              <Button
-                type="primary"
-                htmlType="submit"
-                onClick={() => setModal2Open(false)}
-              >
-                Cancel
-              </Button>
-              <Button type="primary" htmlType="submit">
-                Save
-              </Button>
+        <div className=" flex flex-col justify-center items-center text-center gap-y-4 py-5">
+          <div className="w-[20%]">
+            <div className="flex">
+              <progress
+                className="progress progress-accent w-56"
+                value={50}
+                max="100"
+              ></progress>
+              <span className="mt-[-3%] pl-3">50%</span>
             </div>
-          </Form.Item>
-        </Form>
-      </Modal>
+            <div className="flex">
+              <progress
+                className="progress progress-accent w-56"
+                value={20}
+                max="100"
+              ></progress>
+              <span className="mt-[-3%] pl-3">20%</span>
+            </div>
+            <div className="flex">
+              <progress
+                className="progress progress-accent w-56"
+                value={60}
+                max="100"
+              ></progress>
+              <span className="mt-[-3%] pl-3">60%</span>
+            </div>
+            <div className="flex">
+              <progress
+                className="progress progress-accent w-56"
+                value={37}
+                max="100"
+              ></progress>
+              <span className="mt-[-3%] pl-3">37%</span>
+            </div>
+            <div className="flex">
+              <progress
+                className="progress progress-accent w-56"
+                value={80}
+                max="100"
+              ></progress>
+              <span className="mt-[-3%] pl-3">80%</span>
+            </div>
+          </div>
+        </div>
+
+        <Modal
+          footer={null}
+          title="Update the Datas"
+          destroyOnClose
+          centered
+          open={rej}
+          onOk={() => setRej(false)}
+          onCancel={() => setRej(false)}
+        >
+          <Rejester ressend={ressend} />
+        </Modal>
+        <Modal
+          footer={null}
+          title="Update the Datas"
+          destroyOnClose
+          centered
+          open={modal2Open}
+          onOk={() => setModal2Open(false)}
+          onCancel={() => setModal2Open(false)}
+        >
+          <Form
+            name="basic"
+            labelCol={{ span: 8 }}
+            wrapperCol={{ span: 16 }}
+            style={{ maxWidth: 600 }}
+            initialValues={{ remember: true }}
+            onFinish={onFinish}
+            layout="vertical"
+            className="!mt-5"
+            autoComplete="off"
+          >
+            <Form.Item
+              label="Username"
+              initialValue={details}
+              name="username"
+              rules={[{ message: "Please input your username!" }]}
+            >
+              <Input />
+            </Form.Item>
+            <Form.Item
+              label="Email"
+              name="email"
+              initialValue={details2}
+              rules={[{ message: "Please input your email!" }]}
+            >
+              <Input />
+            </Form.Item>
+
+            <Form.Item
+              label="Password"
+              initialValue={details3}
+              name="password"
+              rules={[{ message: "Please input your password!" }]}
+            >
+              <Input.Password />
+            </Form.Item>
+
+            <Form.Item>
+              <Rate
+                allowHalf
+                defaultValue={rast}
+                onChange={(e) => setRating(e)}
+              />
+            </Form.Item>
+            <Form.Item>
+              <ColorPicker value={colors} onChange={(e, s) => ok(e, s)} />
+            </Form.Item>
+            <Form.Item>
+              <div className=" flex gap-x-5">
+                <Button
+                  type="primary"
+                  htmlType="submit"
+                  onClick={() => setModal2Open(false)}
+                >
+                  Cancel
+                </Button>
+                <Button type="primary" htmlType="submit">
+                  Save
+                </Button>
+              </div>
+            </Form.Item>
+          </Form>
+        </Modal>
+      </div>
     </>
   );
 }
