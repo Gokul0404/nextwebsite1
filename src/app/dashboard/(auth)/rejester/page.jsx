@@ -24,7 +24,7 @@ export default function Rejester(props) {
   
 
     try {
-      await axios.post("http://localhost:3000/api/user", values);
+      await axios.post("/api/user", values);
 
      
      form.resetFields();

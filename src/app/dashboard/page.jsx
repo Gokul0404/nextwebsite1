@@ -47,7 +47,7 @@ export default function Dashboard() {
   const valuess = async () => {
     try {
       setLoading(true);
-      const res = await axios.get("http://localhost:3000/api/posts");
+      const res = await axios.get("/api/posts");
       setDatas(res.data);
       // console.log("database",res.data)
     } catch (error) {
@@ -60,7 +60,7 @@ export default function Dashboard() {
   //delete api functions/...............................
   const deletes = async (e) => {
     try {
-      const a = await axios.delete(`http://localhost:3000/api/delets/${e}`);
+      const a = await axios.delete(`/api/delets/${e}`);
       console.log(`delete success id ${a}`);
       valuess();
     } catch (error) {
@@ -75,7 +75,7 @@ export default function Dashboard() {
 
     const value = { ...values, id: detailsid, rating: rating };
     try {
-      await axios.patch("http://localhost:3000/api/update", value);
+      await axios.patch("/api/update", value);
       console.log("upadet succes");
       setModal2Open(false);
       valuess();

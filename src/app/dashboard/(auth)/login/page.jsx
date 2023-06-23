@@ -14,21 +14,26 @@ export default function Login() {
 
   const onFinish = async (e) => {
     try {
-      await axios.post("http://localhost:3000/api/loginget", e).then((res) => {
-        console.log("oi", res.data[0]);
-        console.log("oo", res.data[0] === undefined);
-        if (res.data[0] === undefined) {
-          console.log("not match id");
+      await axios
+        .post(
+          "/api/loginget",
+          e
+        )
+        .then((res) => {
+          console.log("oi", res.data[0]);
+          console.log("oo", res.data[0] === undefined);
+          if (res.data[0] === undefined) {
+            console.log("not match id");
 
-          Cookies.set("log", false);
-          dispatch(loginid("false"));
-        } else {
-          Cookies.set("log", JSON.stringify(res.data[0]));
-          console.log("navigate", res.data[0]);
-          dispatch(loginid(res.data[0]));
-          navigate.push("/dashboard");
-        }
-      });
+            Cookies.set("log", false);
+            dispatch(loginid("false"));
+          } else {
+            Cookies.set("log", JSON.stringify(res.data[0]));
+            console.log("navigate", res.data[0]);
+            dispatch(loginid(res.data[0]));
+            navigate.push("/dashboard");
+          }
+        });
       console.log("send login data");
     } catch (error) {
       console.log("not send login data");
