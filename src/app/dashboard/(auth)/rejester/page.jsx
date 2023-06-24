@@ -113,7 +113,7 @@ export default function Rejester(props) {
       <Upload
         listType="picture-card"
         maxCount={1}
-        showUploadList={false}
+        // showUploadList={false}
         action="/api/uploadimg"
         // action="/api/uploadimg"
         onChange={(e) => uploadImage(e.file.originFileObj)}
@@ -123,7 +123,7 @@ export default function Rejester(props) {
           <div style={{ marginTop: 8 }}>Upload</div>
         </div>
       </Upload>
-      <Image src={imageList} width={50} height={50} alt="ok" />
+      {/* <Image src={imageList} width={50} height={50} alt="ok" /> */}
       <div className="text-center">
         <Link
           href="/dashboard/login"
