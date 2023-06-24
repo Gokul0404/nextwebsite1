@@ -10,7 +10,7 @@ export const GET = async (request) => {
     console.log(Del, "process.env.MONGOOSE_URL");
     const posts = await Formss.find({});
 
-    console.log("eod", posts);
+    // console.log("eod", posts);
     return new NextResponse(JSON.stringify(posts), { status: 200 });
   } catch (error) {
     console.log(error);

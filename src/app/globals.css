@@ -147,3 +147,8 @@ color: inherit !important;
   background-color: inherit !important;
   color: inherit !important;
 }
+
+.ant-btn-primary{
+  background-color: rgba(2, 81, 172, 0.774) !important;
+  color: white !important;
+}

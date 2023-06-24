@@ -16,6 +16,7 @@ export const PATCH = async (req) => {
     email: bc.email,
     password: bc.password,
     rating: bc.rating,
+    image:bc.image,
   };
 
   try {

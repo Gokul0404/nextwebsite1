@@ -1,5 +1,3 @@
-
-
 import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema(
@@ -14,8 +12,11 @@ const userSchema = new mongoose.Schema(
       type: String,
     },
     rating: {
-      type:String,
-    }
+      type: String,
+    },
+    image: {
+      type: String,
+    },
   },
   { timestamps: true }
 );

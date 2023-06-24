@@ -7,16 +7,17 @@ import user from "../../../model/form";
 export const POST = async (request) => {
   await connect();
 
-    const a = await request.json();
+    const a = (await request.json()) || (await request);
   try {
       console.log("dbs", a);
       const vk = {
           name: a.username,
           email: a.email,
         password: a.password,
-          rating:a.rating
+        rating: a.rating,
+          image:a.image
       };
-
+console.log("imk", vk)
       await user.insertMany([vk])
 
     return new NextResponse("data", { status: 200 });

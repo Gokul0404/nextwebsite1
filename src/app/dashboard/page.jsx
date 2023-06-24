@@ -2,9 +2,9 @@
 
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Modal, Rate, Spin, Table, Tooltip } from "antd";
+import { Modal, Rate, Spin, Table, Tooltip, Upload } from "antd";
 import { Button, Popconfirm, Form, Input } from "antd";
-
+import { PlusOutlined } from "@ant-design/icons";
 import { useSelector } from "react-redux";
 import { BiTrashAlt, BiEdit } from "react-icons/bi";
 import { AiOutlineUserAdd } from "react-icons/ai";
@@ -12,6 +12,7 @@ import { AiOutlineUserAdd } from "react-icons/ai";
 // import { red } from "@mui/material/colors";
 import { ColorPicker, theme } from "antd";
 import Rejester from "./(auth)/rejester/page";
+import Image from "next/image";
 
 export default function Dashboard() {
   const [datas, setDatas] = useState([]);
@@ -41,6 +42,30 @@ export default function Dashboard() {
 
   const a = useSelector((e) => e.cart);
   console.log("details", details3);
+
+
+  //image upload...............................
+   const [imageList, setImageList] = useState();
+
+   const uploadImage = (e) => {
+     // setImageList(e.name);
+
+     try {
+       //base64.............................
+       const data = new FileReader();
+
+       data.addEventListener("load", () => {
+         setImageList(data.result);
+       });
+
+       data.readAsDataURL(e);
+
+       // console.log(imageList);
+       console.log(e);
+     } catch (error) {
+       console.log("errror");
+     }
+   };
 
   //get datas db.....................
 
@@ -73,7 +98,12 @@ export default function Dashboard() {
   const onFinish = async (values) => {
     console.log("Success:", values);
 
-    const value = { ...values, id: detailsid, rating: rating };
+    const value = {
+      ...values,
+      id: detailsid,
+      rating: rating,
+      image: imageList,
+    };
     try {
       await axios.patch("/api/update", value);
       console.log("upadet succes");
@@ -104,6 +134,18 @@ export default function Dashboard() {
       render(a, b, index) {
         return index + 1;
       },
+    },
+    {
+      title: "Image",
+      render(a, b, c) {
+        return (
+          <>
+            <Image src={a.image} alt="img" width={35} height={35} className="rounded-full" />
+            {console.log(a)}
+          </>
+        );
+        
+      }
     },
     {
       title: "Name",
@@ -330,6 +372,22 @@ export default function Dashboard() {
             </Form.Item>
             <Form.Item>
               <ColorPicker value={colors} onChange={(e, s) => ok(e, s)} />
+
+              <Upload
+                className="mt-5"
+                listType="picture-card"
+                maxCount={1}
+                // showUploadList={false}
+                action="/api/uploadimg"
+                // action="/api/uploadimg"
+                onChange={(e) => uploadImage(e.file.originFileObj)}
+              >
+                <div>
+                  <PlusOutlined />
+                  <div style={{ marginTop: 8 }}>Upload</div>
+                </div>
+              </Upload>
+              {/* <Image src={imageList} width={50} height={50} alt="ok" /> */}
             </Form.Item>
             <Form.Item>
               <div className=" flex gap-x-5">
