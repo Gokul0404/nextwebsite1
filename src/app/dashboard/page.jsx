@@ -89,6 +89,7 @@ export default function Dashboard() {
     setRej(false);
     valuess();
   };
+
   useEffect(() => {
     valuess();
   }, []);
@@ -132,6 +133,7 @@ export default function Dashboard() {
                 okText="Yes"
                 cancelText="No"
                 onConfirm={() => deletes(a._id)}
+                
               >
                 <BiTrashAlt className="text-[17px] text-red-600 cursor-pointer" />
               </Popconfirm>
@@ -335,10 +337,15 @@ export default function Dashboard() {
                   type="primary"
                   htmlType="submit"
                   onClick={() => setModal2Open(false)}
+                  className="!text-white !bg-blue-600 hover:!text-white hover:!bg-blue-600"
                 >
                   Cancel
                 </Button>
-                <Button type="primary" htmlType="submit">
+                <Button
+                  type="primary"
+                  htmlType="submit"
+                  className="!text-white !bg-blue-600 hover:!text-white hover:!bg-blue-600  "
+                >
                   Save
                 </Button>
               </div>
