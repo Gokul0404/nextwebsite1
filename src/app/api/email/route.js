@@ -1,6 +1,7 @@
 
 
 
+import Cookies from 'js-cookie';
 import { NextResponse } from 'next/server';
 import mailer from 'nodemailer'
 import { toast } from 'react-toastify';
@@ -43,7 +44,7 @@ export const POST = async (req) => {
           console.log(error);
         } else {
             console.log(`Email sent: ${info.response}`);
-          
+          Cookies.set("info", info.response);
           return new NextResponse("message: send", {status:200})
         }
       });
