@@ -3,6 +3,7 @@
 
 import { NextResponse } from 'next/server';
 import mailer from 'nodemailer'
+import { toast } from 'react-toastify';
 
 export const POST = async (req) => {
 
@@ -41,11 +42,12 @@ export const POST = async (req) => {
         if (error) {
           console.log(error);
         } else {
-          console.log(`Email sent: ${info.response}`);
+            console.log(`Email sent: ${info.response}`);
+          
           return new NextResponse("message: send", {status:200})
         }
       });
-        return new NextResponse(data, { status: 200 });
+        return new NextResponse(JSON.stringify(data), { status: 200 });
     } catch (error) {
         console.log("mail actions failed");
         return new NextResponse ("ERROR", {status:500})
