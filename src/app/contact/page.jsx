@@ -1,9 +1,34 @@
 "use client";
 
+import axios from "axios";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
+
+import { toast } from "react-toastify";
 
 export default function Contact() {
+  const initialValue = {
+    name: "",
+    email: "",
+    message: "",
+  };
+  const [val, setVal] = useState(initialValue);
+
+  const valks = (e, filed) => {
+    setVal((pre) => ({ ...pre, [filed]: e.target.value }));
+  };
+  const conts = async (e) => {
+    e.preventDefault();
+
+    try {
+      const da = await axios.post("/api/email", val);
+      console.log("succes", da);
+      toast.success("Email sended successfuly")
+      setVal(initialValue);
+    } catch (error) {
+      console.log("email data not send", error);
+    }
+  };
 
   return (
     <div className="mt-5">
@@ -31,7 +56,10 @@ export default function Contact() {
                   <input
                     type="text"
                     required="true"
+                    name="name"
                     className="pt-2 border-b outline-none"
+                    onChange={(e) => valks(e, "name")}
+                    value={val.name}
                   ></input>
                 </div>
                 <div className="flex flex-col py-2">
@@ -40,6 +68,9 @@ export default function Contact() {
                     type="text"
                     required="true"
                     className="pt-2 border-b outline-none"
+                    name="email"
+                    value={val.email}
+                    onChange={(e) => valks(e, "email")}
                   ></input>
                 </div>
                 <div className="flex flex-col py-2">
@@ -47,11 +78,18 @@ export default function Contact() {
                   <textarea
                     type=""
                     required="true"
+                    name="message"
                     className="pt-2 border-b outline-none"
+                    value={val.message}
+                    onChange={(e) => valks(e, "message")}
                   ></textarea>
                 </div>
                 {/* <div className="bg-green text-center rounded-md my-4 cursor-pointer"> */}
-                <button className="w-full mt-5 rounded-md bg-green text-white font-bold py-2">
+                <button
+                  name="submit "
+                  className="w-full mt-5 rounded-md bg-green text-white font-bold py-2"
+                  onClick={(e) => conts(e)}
+                >
                   Submit
                 </button>
                 {/* </div> */}

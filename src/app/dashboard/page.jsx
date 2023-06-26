@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import {motion} from 'framer-motion'
 import axios from "axios";
 import { Modal, Rate, Spin, Table, Tooltip, Upload } from "antd";
 import { Button, Popconfirm, Form, Input } from "antd";
@@ -168,6 +169,7 @@ export default function Dashboard() {
       render(a, b, c) {
         return (
           <>
+         
             <div className="flex gap-x-5">
               <Popconfirm
                 title="Delete the User"
@@ -410,6 +412,9 @@ export default function Dashboard() {
             </Form.Item>
           </Form>
         </Modal>
+      </div>
+      <div className="flex justify-center min-h-screen">
+        
       </div>
     </>
   );

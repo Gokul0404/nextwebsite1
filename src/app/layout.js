@@ -3,7 +3,8 @@
 // import Cookies from "js-cookie";
 import Footer from "./component/Footer";
 import Navbar from "./component/Navbar";
-
+ import { ToastContainer, toast } from "react-toastify";
+ import "react-toastify/dist/ReactToastify.css";
 import "./globals.css";
 import { Inter } from "next/font/google";
 import {  useState } from "react";
@@ -48,6 +49,7 @@ export default function RootLayout({ children }) {
           <Navbar /> {children}
           <Tonggle data={data} />
           <Footer />
+          <ToastContainer/>
         {/* </SessionProvider> */}
         </Provider> 
    
